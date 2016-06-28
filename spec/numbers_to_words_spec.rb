@@ -22,4 +22,7 @@ describe('numbers_to_words') do
   it("translates numbers between 20000-99999 to a word") do
     expect("57905".numbers_to_words()).to(eq("fifty seven thousand nine hundred five"))
   end
+  it("translates numbers between 100000-999999 to a word") do
+    expect("112100".numbers_to_words()).to(eq("one hundred twelve thousand one hundred"))
+  end
 end

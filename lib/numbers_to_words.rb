@@ -9,6 +9,7 @@ class String
     hundreds_digit = number./(100).%(10)
     thousands_digit = number./(1000).%(10)
     tens_of_thousands_digit = number./(10000).%(10)
+    hundreds_of_thousands_digit = number./(100000).%(10)
 
     # Ones Place Object
     ones_place_numbers = {1=>"one", 2=>"two", 3=>"three", 4=>"four", 5=>"five", 6=>"six", 7=>"seven", 8=>"eight", 9=>"nine"}
@@ -26,6 +27,20 @@ class String
     #Zero Case
     if number.==(0)
       final_output = "zero"
+    end
+
+    # Hundreds of Thousands
+    ones_place_integers.each() do |int|
+      if hundreds_of_thousands_digit.==(int)
+        hundreds_of_thousands_output_number = ones_place_numbers.fetch(int).dup()
+        hundreds_of_thousands_output = hundreds_of_thousands_output_number.concat(" hundred")
+        if tens_of_thousands_digit.!=(0)
+          hundreds_of_thousands_output.concat(" ")
+        elsif number.%(100000).==(0)
+          hundreds_of_thousands_output.concat(" thousand")
+        end
+        final_output.concat(hundreds_of_thousands_output)
+      end
     end
 
     # Tens of Thousands
