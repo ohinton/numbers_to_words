@@ -7,4 +7,7 @@ describe('numbers_to_words') do
   it("translates numbers between 20-99 to a word") do
     expect("21".numbers_to_words()).to(eq("twenty one"))
   end
+  it("translates numbers between 11-19 to a word") do
+    expect("19".numbers_to_words()).to(eq("nineteen"))
+  end
 end
