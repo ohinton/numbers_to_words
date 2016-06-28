@@ -89,7 +89,6 @@ class String
       end
     end
 
-
     # Hundreds
     ones_place_integers.each() do |int|
       if hundreds_digit.==(int)
