@@ -32,24 +32,45 @@ class String
     if tens_of_thousands_digit.!=(1)
       tens_place_integers.each() do |int|
         if tens_of_thousands_digit.==(int)
-          tens_of_thousands_output = tens_place_numbers.fetch(int)
-          if tens_of_thousands_digit.!=(0)
+          tens_of_thousands_output = tens_place_numbers.fetch(int).dup()
+          if thousands_digit.!=(0)
             tens_of_thousands_output.concat(" ")
+          elsif number.%(1000).!=(0)
+              tens_of_thousands_output.concat(" thousand ")
+          else
+            tens_of_thousands_output.concat(" thousand")
           end
         final_output.concat(tens_of_thousands_output)
         end
       end
     end
 
-    # Thousands
-    ones_place_integers.each() do |int|
-      if thousands_digit.==(int)
-        thousands_output_number = ones_place_numbers.fetch(int).dup()
-        thousands_output = thousands_output_number.concat(" thousand")
-        if number.%(1000).!=(0)
-          thousands_output.concat(" ")
+    # 10000-19999
+    if tens_of_thousands_digit.==(1)
+      teens_integers.each() do |int|
+        if thousands_digit.==(int)
+          teens_thousands_output = teens_numbers.fetch(int).dup()
+          if number.%(1000).!=(0)
+              teens_thousands_output.concat(" thousand ")
+          else
+            teens_thousands_output.concat(" thousand")
+          end
+        final_output.concat(teens_thousands_output)
         end
-        final_output.concat(thousands_output)
+      end
+    end
+
+    # Thousands
+    if tens_of_thousands_digit.!=(1)
+      ones_place_integers.each() do |int|
+        if thousands_digit.==(int)
+          thousands_output_number = ones_place_numbers.fetch(int).dup()
+          thousands_output = thousands_output_number.concat(" thousand")
+          if number.%(1000).!=(0)
+            thousands_output.concat(" ")
+          end
+          final_output.concat(thousands_output)
+        end
       end
     end
 
@@ -70,7 +91,7 @@ class String
     if tens_digit.==(1)
       teens_integers.each() do |int|
         if ones_digit.==(int)
-          teens_output = teens_numbers.fetch(int)
+          teens_output = teens_numbers.fetch(int).dup()
           final_output.concat(teens_output)
         end
       end
@@ -80,7 +101,7 @@ class String
     if tens_digit.!=(1)
       tens_place_integers.each() do |int|
         if tens_digit.==(int)
-          tens_output = tens_place_numbers.fetch(int)
+          tens_output = tens_place_numbers.fetch(int).dup()
           if ones_digit.!=(0)
             tens_output.concat(" ")
           end
@@ -93,7 +114,7 @@ class String
     if tens_digit.!=(1)
       ones_place_integers.each() do |int|
         if ones_digit.==(int)
-          ones_output = ones_place_numbers.fetch(int)
+          ones_output = ones_place_numbers.fetch(int).dup()
           final_output.concat(ones_output)
         end
       end
