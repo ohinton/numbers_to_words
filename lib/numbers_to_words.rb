@@ -7,28 +7,44 @@ class String
     ones_digit = number.%(10)
     tens_digit = number./(10).%(10)
     hundreds_digit = number./(100)
+    thousands_digit = number./(1000)
 
+    # Ones Place Object
     ones_place_numbers = {1=>"one", 2=>"two", 3=>"three", 4=>"four", 5=>"five", 6=>"six", 7=>"seven", 8=>"eight", 9=>"nine"}
     ones_place_integers = ones_place_numbers.keys()
 
+    # Teens Place Object
     teens_numbers = {0=>"ten", 1=>"eleven", 2=>"twelve", 3=>"thirteen", 4=>"fourteen", 5=>"fifteen", 6=>"sixteen", 7=>"seventeen", 8=>"eighteen", 9=>"nineteen"}
     teens_integers = teens_numbers.keys()
 
+    # Tens Place Object
     tens_place_numbers = {2=>"twenty", 3=>"thirty", 4=>"forty", 5=>
     "fifty", 6=>"sixty", 7=>"seventy", 8=>"eighty", 9=>"ninety"}
     tens_place_integers = tens_place_numbers.keys()
-
-    hundreds_place_numbers = {1=>"one hundred", 2=>"two hundred", 3=>"three hundred", 4=>"four hundred", 5=>"five hundred", 6=>"six hundred", 7=>"seven hundred", 8=>"eight hundred", 9=>"nine hundred"}
-    hundreds_place_integers = hundreds_place_numbers.keys()
 
     #Zero Case
     if number.==(0)
       final_output = "zero"
     end
+
+    # Thousands
+    ones_place_integers.each() do |int|
+      if thousands_digit.==(int)
+        thousands_output_number = ones_place_numbers.fetch(int).dup()
+        thousands_output = thousands_output_number.concat(" thousand")
+        if number.%(1000).!=(0)
+          thousands_output.concat(" ")
+        end
+        final_output.concat(thousands_output)
+      end
+    end
+
+
     # Hundreds
-    hundreds_place_integers.each() do |int|
+    ones_place_integers.each() do |int|
       if hundreds_digit.==(int)
-        hundreds_output = hundreds_place_numbers.fetch(int)
+        hundreds_output_number = ones_place_numbers.fetch(int).dup()
+        hundreds_output = hundreds_output_number.concat(" hundred")
         if number.%(100).!=(0)
           hundreds_output.concat(" ")
         end
