@@ -17,7 +17,9 @@ class String
     tens_place_integers.each() do |int|
       if tens_digit.==(int)
         tens_output = tens_place_numbers.fetch(int)
-        tens_output.concat(" ")
+        if ones_digit.!=(0)
+          tens_output.concat(" ")
+        end
         final_output = tens_output
       end
     end
