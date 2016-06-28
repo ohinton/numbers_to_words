@@ -6,8 +6,9 @@ class String
     number = self.to_i()
     ones_digit = number.%(10)
     tens_digit = number./(10).%(10)
-    hundreds_digit = number./(100)
-    thousands_digit = number./(1000)
+    hundreds_digit = number./(100).%(10)
+    thousands_digit = number./(1000).%(10)
+    tens_of_thousands_digit = number./(10000).%(10)
 
     # Ones Place Object
     ones_place_numbers = {1=>"one", 2=>"two", 3=>"three", 4=>"four", 5=>"five", 6=>"six", 7=>"seven", 8=>"eight", 9=>"nine"}
@@ -25,6 +26,19 @@ class String
     #Zero Case
     if number.==(0)
       final_output = "zero"
+    end
+
+    # Tens of Thousands
+    if tens_of_thousands_digit.!=(1)
+      tens_place_integers.each() do |int|
+        if tens_of_thousands_digit.==(int)
+          tens_of_thousands_output = tens_place_numbers.fetch(int)
+          if tens_of_thousands_digit.!=(0)
+            tens_of_thousands_output.concat(" ")
+          end
+        final_output.concat(tens_of_thousands_output)
+        end
+      end
     end
 
     # Thousands

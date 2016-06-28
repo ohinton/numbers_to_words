@@ -16,4 +16,7 @@ describe('numbers_to_words') do
   it("translates numbers between 1000-9999 to a word") do
     expect("1050".numbers_to_words()).to(eq("one thousand fifty"))
   end
+  it("translates numbers between 10,000-99,999 to a word") do
+    expect("57905".numbers_to_words()).to(eq("fifty seven thousand nine hundred five"))
+  end
 end
