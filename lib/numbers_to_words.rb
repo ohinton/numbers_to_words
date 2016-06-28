@@ -6,6 +6,7 @@ class String
     number = self.to_i()
     ones_digit = number.%(10)
     tens_digit = number./(10)
+    hundreds_digit = number./(100)
 
     ones_place_numbers = {1=>"one", 2=>"two", 3=>"three", 4=>"four", 5=>"five", 6=>"six", 7=>"seven", 8=>"eight", 9=>"nine"}
     ones_place_integers = ones_place_numbers.keys()
@@ -16,6 +17,20 @@ class String
     tens_place_numbers = {2=>"twenty", 3=>"thirty", 4=>"forty", 5=>
     "fifty", 6=>"sixty", 7=>"seventy", 8=>"eighty", 9=>"ninety"}
     tens_place_integers = tens_place_numbers.keys()
+
+    hundreds_place_numbers = {1=>"one hundred", 2=>"two hundred", 3=>"three hundred", 4=>"four hundred", 5=>"five hundred", 6=>"six hundred", 7=>"seven hundred", 8=>"eight hundred", 9=>"nine hundred"}
+    hundreds_place_integers = hundreds_place_numbers.keys()
+
+    # Hundreds
+    hundreds_place_integers.each() do |int|
+      if hundreds_digit.==(int)
+        hundreds_output = hundreds_place_numbers.fetch(int)
+        if number.%(100).!=(0)
+          hundreds_output.concat(" ")
+        end
+        final_output.concat(hundreds_output)
+      end
+    end
 
     # Teens
     if tens_digit.==(1)
