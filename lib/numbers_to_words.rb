@@ -5,7 +5,7 @@ class String
     final_output = ""
     number = self.to_i()
     ones_digit = number.%(10)
-    tens_digit = number./(10)
+    tens_digit = number./(10).%(10)
     hundreds_digit = number./(100)
 
     ones_place_numbers = {1=>"one", 2=>"two", 3=>"three", 4=>"four", 5=>"five", 6=>"six", 7=>"seven", 8=>"eight", 9=>"nine"}
@@ -21,6 +21,10 @@ class String
     hundreds_place_numbers = {1=>"one hundred", 2=>"two hundred", 3=>"three hundred", 4=>"four hundred", 5=>"five hundred", 6=>"six hundred", 7=>"seven hundred", 8=>"eight hundred", 9=>"nine hundred"}
     hundreds_place_integers = hundreds_place_numbers.keys()
 
+    #Zero Case
+    if number.==(0)
+      final_output = "zero"
+    end
     # Hundreds
     hundreds_place_integers.each() do |int|
       if hundreds_digit.==(int)
@@ -50,7 +54,7 @@ class String
           if ones_digit.!=(0)
             tens_output.concat(" ")
           end
-          final_output = tens_output
+        final_output.concat(tens_output)
         end
       end
     end

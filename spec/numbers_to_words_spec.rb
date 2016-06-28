@@ -11,6 +11,6 @@ describe('numbers_to_words') do
     expect("19".numbers_to_words()).to(eq("nineteen"))
   end
   it("translates numbers between 100-999 to a word") do
-    expect("100".numbers_to_words()).to(eq("one hundred"))
+    expect("368".numbers_to_words()).to(eq("three hundred sixty eight"))
   end
 end
